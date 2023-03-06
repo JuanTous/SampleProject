@@ -1,46 +1,49 @@
-import * as React from 'react';
-import { ScrollView, Text, StyleSheet, Image } from 'react-native';
+import {
+  ScrollView,
+  Image,
+  StyleSheet,
+  Text,
+  useColorScheme,
+} from 'react-native';
 
-export default function WelcomeScreen() {
+const WelcomeScreen = () => {
+  const colorScheme = useColorScheme();
+
   return (
-    <ScrollView indicatorStyle="white" style={styles.container}>
-      
-      <Text style={styles.headerText}>
-        <Image source={require('./img/logo.png')} style={styles.logo} resizeMode={'cover'}/>
-        Little Lemon
-      </Text>
-      <Text style={styles.regularText}>
-        Little Lemon is a charming neighborhood bistro that serves simple food
-        and classic cocktails in a lively but casual environment. We would love
-        to hear more about your experience with us!
-      </Text>
+    <ScrollView
+      style={[
+        styles.container,
+        colorScheme === 'light'
+          ? { backgroundColor: '#fff' }
+          : { backgroundColor: '#333333' },
+      ]}>
+           {' '}
+      <Image
+        style={styles.logo}
+        source={require('./img/littleLemonLogo.png')}
+        resizeMode="center"
+        accessible={true}
+        accessibilityLabel={'Little Lemon Logo'}
+      />
+          <Text style={styles.regular}>Color Scheme: {colorScheme}</Text>   {' '}
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
+  logo: {
+    height: 100,
+    width: 300,
+  },
   container: {
     flex: 1,
+    padding: 24,
+    marginTop: 25,
   },
-  headerText: {
-    padding: 40,
-    fontSize: 30,
-    color: '#EDEFEE',
-    textAlign: 'center',
-    display: 'flex',
-    alignItems: 'center'
-  },
-  regularText: {
-    fontSize: 24,
-    padding: 20,
-    marginVertical: 8,
-    color: '#EDEFEE',
+  regular: {
+    fontSize: 18,
     textAlign: 'center',
   },
-  logo: { 
-      width: 100, 
-      height: 100, 
-      marginRight: 10,
-      borderRadius: 20, 
-    }
 });
+
+export default WelcomeScreen;
