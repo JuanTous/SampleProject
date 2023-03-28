@@ -26,7 +26,7 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#333333"
+    backgroundColor: '#333333',
   },
   headerWrapper: {
     flexDirection: 'row',
@@ -55,5 +55,3 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
 });
-
-
